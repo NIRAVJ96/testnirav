@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Cryptotrades Documentation</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Cryptotrades&rdquo; Documentation by &ldquo;LinkWell&rdquo; v1.1</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;Cryptotrades&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 12/08/2021<br>
+					By: LinkWell<br>
+					Email: <a href="mailto:support@linkwellsystems.com">support@linkwellsystems.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing Cryptotrades. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="https://codecanyon.net/user/link-well">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+            <li><a href="#requirement">System Requirement</a></li>
+			<li><a href="#web3">How to Configure Web3 CLI</a></li>
+			<li><a href="#mongoDB">How to configure mongoDB</a></li>
+			<li><a href="#email">How to configure mail</a></li>
+			<li><a href="#permissions">permissions</a></li>
+			<li><a href="#nodejs">Install and run nodejs backend</a></li>
+			<li><a href="#google">How to configure google login</a></li>
+			<li><a href="#facebook">How to configure facebook login</a></li>
+			<li><a href="#angular">Install and run angular frontend</a></li>
+			<li><a href="#admin">Install and run angular admin panel</a></li>
+		</ol>
+		<hr>
+		<h3 id="requirement"><strong>A) System Requirement</strong> - <a href="#toc">top</a></h3>
+		<ul>
+			<li>Operating system : Linux</li>
+			<li>Docker</li>
+			<li>Web3 cli</li>
+			<li>Nodejs : 12.x +</li>
+			<li>MongoDB : 4.x +</li>
+			<li>Angular : 11.x +</li>
+			<li>SSH root access for installation purpose</li>
+		</ul>
+
+		<hr>
+		<h3 id="requirement"><strong>B) How to Web3 CLI</strong> - <a href="#toc">top</a></h3>
+		<ul>
+			<li>Refer offical documentation for docker installation in linux. <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">click here</a></li>
+			<li>Install web3 cli using below command from terminal
+			<p><pre>curl -LSs https://raw.githubusercontent.com/gochain/web3/master/install.sh | sh</pre></p>	
+			</li>
+			<li>Create or login infura.io account </li>
+			<li>Go to ethereum dashboard. please refer below link
+				<p>
+					<pre>https://infura.io/dashboard/ethereum</pre>
+				</p>
+			</li>
+			<li>Create new project and go to settings. please see <a href="https://prnt.sc/1g43qta" target="_blank">screenshot</a></li>
+			<li>Copy http endpoint from infura. <a href="https://prnt.sc/1g45srz" target="_blank">screenshot</a></li>
+			<li>update WEB3_RPC_URL in following files from package root directory
+				<ol>
+					<li>create.sh file in ./backend directory</li>
+					<li>send.sh file in ./backend directory</li>
+					<li>transaction.sh file in ./backend directory</li>
+					<li>mint.sh file in ./backend directory</li>
+					<li>address.sh file in ./backend directory</li>
+				</ol>
+			</li>
+		</ul>
+		<hr>
+
+		<h3 id="mongoDB"><strong>C) How to configure mongoDB</strong> - <a href="#toc">top</a></h3>
+		<ul>
+			<li>Install mongodb in linux with offical documentation. please refer by clicking the <a href="https://docs.mongodb.com/manual/administration/install-on-linux/" target="_blank">link</a></li>
+			<li>Go to ./backend/helper/config.js from application root directory</li>
+			<li>Update database information. see the <a href="https://prnt.sc/1g48flt" target="_blank">link</a>
+			<ol>
+				<li><strong>Host</strong> - it will be mongodb running host. By default it was running in localhost</li>
+				<li><strong>Port</strong> - it will be mongodb running port. By default it was running in 27017</li>
+				<li><strong>Name</strong> - it will be database name</li>
+				<li><strong>Prefix</strong> - it will be database collection prefix. it was option variable</li>
+			</ol>
+			</li>
+
+		</ul>
+
+		<hr>
+
+		<h3 id="email"><strong>D) How to configure mail</strong> - <a href="#toc">top</a></h3>
+		<ul>
+			<li>SMTP configuration
+				<ol>
+                   <li>Create SMTP details in any mail provider</li>
+				   <li>Go to ./backend/helper/config.js from application root directory</li>
+				   <li>update SMTP detail under mail variable. see screenshot <a href="http://prntscr.com/1ic2s6g" target="_blank">here</a></li>
+                   <li>update type to "smtp". see screenshot <a href="https://prnt.sc/1g4avx9" target="_blank">here</a>
+				</ol>
+			</li>
+			<li>Follow below steps to avoid email notification in the application
+				<ol>
+					<li>Go to ./backend/helper/config.js from application root directory</li>
+					<li>update type to "" (empty string). see screenshot <a href="https://prnt.sc/1g4avx9" target="_blank">here</a>
+				</ol>
+			</li>
+
+		</ul>
+
+		<hr>
+
+		<h3 id="permissions"><strong>E) Permissions</strong> - <a href="#toc">top</a></h3>
+        <ul>
+			<li>Go to ./backend from application root directory</li>
+			<li>Give full permission for media folder in linux
+				<p>
+					<pre>sudo chmod 777 -R media</pre>
+				</p>
+			</li>
+		</ul>
+
+		<hr>
+
+		<h3 id="nodejs"><strong>F) Install and run nodejs backend</strong> - <a href="#toc">top</a></h3>
+		<ul>
+			<li>Go to ./backend from application root directory in terminal</li>
+			<li>Run "npm install" from terminal</li>
+			<li>To run the application temporarily. Run following command
+				<p>
+					<pre>npm run dev</pre>
+				</p>
+			</li>
+			<li>To run the the application always. Follow below steps
+				<ol>
+					<li>Install pm2 by running the following command
+						<p>
+							<pre>sudo npm install -g pm2</pre>
+						</p>
+					</li>
+					<li>Go to ./backend from application root directory in terminal
+						<p>
+							<pre>pm2 start 'npm run dev' --name backend</pre>
+						</p>
+					</li>
+					<li>Run "example.com/settings/install" to configure admin user and admin comission settings. make sure change "example.com" with valid api host information</li>
+					<li>Go to ./backend/module/comment/route/settings.js from application root directory. and comment or remove following line
+						<p>
+							<pre>router.get('/install',settingsController.installOptions)</pre>
+						</p>
+					</li>
+				</ol>
+			</li>
+		</ul>
+
+		<hr>
+
+		<h3 id="google"><strong>G) How to configure google login</strong> - <a href="#toc">top</a></h3>
+        <ul>
+			<li>Go to google developer console </li>
+			<li>Create or select new project and go to credentials. please see <a href="https://prnt.sc/1fb8dfm" target="_blank">screenshot</a></li>
+            <li>Click create credentials. please see <a href="https://prnt.sc/1fb8yql" target="_blank">screenshot</a></li>
+			<li>Update oauth consent screen if it is new account. please see <a href="https://prnt.sc/1g4f1k8" target="_blank">screenshot</a></li>
+			<li>Create new credetials. please see <a href="https://prnt.sc/1g4fpjj" target="_blank">screenshot</a> </li>
+			<li>Copy google client Id. please see <a href="https://prnt.sc/1g4gi59" target="_blank">screenshot</a></li>
+			<li>Go to ./frontend/src/app/constants/config.ts from application root directory</li>
+			<li>Update google client id. please see <a href="https://prnt.sc/1g4hc9i" target="_blank">screenshot</a></li>
+		</ul>
+		<hr>
+		<h3 id="facebook"><strong>H) How to configure facebook login</strong> - <a href="#toc">top</a></h3>
+        <ul>
+			<li>go to facebook developers account and login to the development account</li>
+			<li>Create new app in developer console. please see<a href="https://developers.facebook.com/apps/" target="_blank">link</a></li>
+			<li>Once account created and configured, change app mode to live. <a href="https://prnt.sc/1fbibre" target="_blank">screenshot</a></li>
+			<li>Go to ./frontend/src/app/constants/config.ts from application root directory</li>
+			<li>Update facebook client id. please see <a href="https://prnt.sc/1g4ifxm" target="_blank">screenshot</a></li>
+		</ul>
+
+		<hr>
+
+		<h3 id="angular"><strong>I) Install and run angular frontend</strong> - <a href="#toc">top</a></h3>
+		<ul>
+		   <li>Go to ./frontend from application root directory in terminal</li>
+		   <li>Run "npm install" from terminal</li>
+		   <li>Go to ./frontend/src/app/constants/config.ts and ./frontend/src/app/constants/api.ts from application root directory</li>
+		   <li>replace "example.com" with correct backend url.  please see <a href="https://prnt.sc/1g4ksdj" target="_blank">screenshot</a> </li>
+
+		   <li>To run the the application always. Follow below steps
+			   <ol>
+				   <li>Install pm2 by running the following command "sudo npm install -g pm2"</li>
+				   <li>Go to ./frontend from application root directory in terminal</li>
+				   <li>Run "pm2 start 'npm run dev' --name backend"</li>
+			   </ol>
+		   </li>
+		   <li>Go to ./frontend from application root directory in terminal</li>
+		   <li>
+			   To run the application use below command
+pm2 start "ng serve --host 0.0.0.0 --port 5001 --disable-host-check --prod --live-reload false --name frontend
+		   </li>
+		   <li>Make sure to enable the ports used in both frontend and backend in hosting firewall or security groups</li>
+		</ul>
+		<hr>
+
+		<h3 id="admin"><strong>J) Install and run angular admin panel</strong> - <a href="#toc">top</a></h3>
+		<ul>
+		   <li>Go to ./adminpanel from application root directory in terminal</li>
+		   <li>Run "npm install" from terminal</li>
+		   <li>Go to ./adminpanel/src/app/constants/config.ts and ./adminpanel/src/app/constants/api.ts from application root directory</li>
+		   <li>replace "example.com" with correct backend url.  please see <a href="https://prnt.sc/1g4mpfz" target="_blank">screenshot</a> </li>
+		   <li>Go to ./adminpanel from application root directory in terminal</li>
+		   <li>
+			   To run the application use below command
+pm2 start "ng serve --host 0.0.0.0 --port 5001 --disable-host-check --prod --live-reload false --name adminpanel
+		   </li>
+		   <li>Make sure to enable the ports used in adminpanel in hosting firewall or security groups</li>
+		</ul>
+   
+
+	   
+	   <hr>
+		
+		<p>Once again, thank you so much for purchasing Cryptotrades. As I said at the beginning, I'd be glad to help you if you have any questions relating to this theme. No guarantees, but I'll do my best to assist. If you have a more general question relating to the scripts on codecanyon, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p> 
+		
+		<p class="append-bottom alt large"><strong>LinkWell</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>
