@@ -15,7 +15,7 @@ const config = {
       port: 27017,
       username: '',
       password: '',
-      name: 'nftmarketplace',
+      name: 'MY_PROJECT',
       prefix:'linkwell_'
     },
     mail: {
